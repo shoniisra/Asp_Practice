@@ -1,0 +1,30 @@
+﻿@model ejercicioCuatroClases.Models.Libro
+
+@{
+    /**/
+
+    ViewBag.Title = "Nuevo";
+}
+
+<h2>Nuevo</h2>
+<!-- using (Html.BeginForm("Crear", "Biblioteca")) -->
+@using (Html.BeginForm("CrearLista", "Biblioteca"))
+{
+    <div>
+        @Html.LabelFor(Model => Model.Codigo)
+        @Html.TextBoxFor(Model => Model.Codigo)
+    </div>
+    <div>
+        @Html.LabelFor(Model => Model.Nombre)
+        @Html.TextBoxFor(Model => Model.Nombre)
+    </div>
+    <div>
+        @Html.LabelFor(Model => Model.Costo)
+        @Html.TextBoxFor(Model => Model.Costo)
+    </div>
+    <div>
+        <input type="submit" name="Enviar" value="Crear Nuevo" />
+    </div>
+
+
+}

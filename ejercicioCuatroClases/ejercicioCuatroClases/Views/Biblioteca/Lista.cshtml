@@ -1,0 +1,31 @@
+﻿@model List<ejercicioCuatroClases.Models.Libro>
+
+@{
+    ViewBag.Title = "Lista";
+}
+
+<h2>Lista</h2>
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Código</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Costo</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var Milibro in Model)
+        {
+        <tr>
+            <td>@Milibro.Codigo</td>
+            <td>@Milibro.Nombre</td>
+            <td>@Milibro.Costo</td>
+        </tr>
+
+        }
+
+    </tbody>
+
+        
+
+</table>
