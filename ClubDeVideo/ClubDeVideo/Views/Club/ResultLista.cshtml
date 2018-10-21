@@ -1,0 +1,53 @@
+﻿@model List<ClubDeVideo.Models.Pelicula>
+@{
+    ViewBag.Title = "ResultLista";
+}
+
+<h2>Peliculas Disponibles</h2>
+<br />
+
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Genero</th>
+            <th scope="col">Precio</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var MiPeli in Model)
+        {
+            <tr>
+                <td>@MiPeli.id</td>
+                <td>@MiPeli.Nombre</td>
+                <td>@MiPeli.Genero</td>
+                <td>@MiPeli.Precio</td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+<br />
+
+<br />
+<hr />
+<br />
+
+<br />
+<div >
+    <form action="/Club/ResultLista" method="post">
+        <div class="form-group">
+            <input type="number" name="id" placeholder="ID" value="" />
+            <input type="text" name="Nombre" placeholder="Nombre" value="" />
+            <input type="text" name="Genero" placeholder="Genero" value="" />
+            <input type="number" name="Precio" placeholder="Precio" value="" />
+        </div>
+        <div class="table table-striped">
+            <input class="btn btn-primary  btn-lg" type="submit" name="Enviar" value="Agregar Nuevo" />
+        </div>
+    </form>
+</div>
+
+
+

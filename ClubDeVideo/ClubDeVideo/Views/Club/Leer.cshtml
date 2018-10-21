@@ -1,0 +1,42 @@
+﻿@model ClubDeVideo.Models.Pelicula
+@{
+                /**/
+
+                ViewBag.Title = "Leer";
+}
+
+<h2>Nueva Película</h2>
+<br />
+
+
+@using (Html.BeginForm("Leer", "Club"))
+{
+<table class="table table-striped">
+    <tr>
+        <th> @Html.LabelFor(Model => Model.id)</th>
+        <td> @Html.TextBoxFor(Model => Model.id)</td>
+    </tr>
+    <tr>
+        <th>@Html.LabelFor(Model => Model.Nombre)</th>
+        <td>@Html.TextBoxFor(Model => Model.Nombre)</td>
+    </tr>
+    <tr>
+        <th>@Html.LabelFor(Model => Model.Genero)</th>
+        <td>@Html.TextBoxFor(Model => Model.Genero)</td>
+    </tr>
+    <tr>
+        <th>@Html.LabelFor(Model => Model.Precio)</th>
+        <td>@Html.TextBoxFor(Model => Model.Precio)</td>
+    </tr>
+
+
+</table>
+
+   <br />
+ 
+    <div class="table table-striped">
+        <input type="submit" class="btn btn-primary btn-lg" name="Enviar" value="Crear Nuevo" />
+    </div>
+
+
+}

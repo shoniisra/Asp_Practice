@@ -4,35 +4,42 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    <title>@ViewBag.Title - Club de Peliculas</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="collapse navbar-collapse">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Nombre de aplicación", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Club de Peliculas", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
-                </ul>
+            <div class="btn-group pull-right" role="group">
+                <button id="btnGroupDrop1" type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    OPCIONES
+                </button>
+                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink(" Ver  ", "Mostrar", "Club")</li>
+                        <li>@Html.ActionLink(" Añadir Nuevo ", "Leer", "Club")</li>
+                        <li>@Html.ActionLink(" Listar ", "ResultLista", "Club")</li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
+       
+        
+    </nav>
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
+        <footer class="navbar-fixed-bottom">
+            <p>Desarrollado por Johnny Villacis - &copy; @DateTime.Now.Year </p>
         </footer>
     </div>
 
