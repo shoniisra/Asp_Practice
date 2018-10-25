@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="mydbModelStoreContainer" CdmEntityContainer="mydbEntities">
+    <EntitySetMapping Name="ciudad">
+      <EntityTypeMapping TypeName="mydbModel.ciudad">
+        <MappingFragment StoreEntitySet="ciudad">
+          <ScalarProperty Name="idciudad" ColumnName="idciudad" />
+          <ScalarProperty Name="ciu_nombre" ColumnName="ciu_nombre" />
+          <ScalarProperty Name="provincia_idprovincia" ColumnName="provincia_idprovincia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="parroquia">
+      <EntityTypeMapping TypeName="mydbModel.parroquia">
+        <MappingFragment StoreEntitySet="parroquia">
+          <ScalarProperty Name="idparroquia" ColumnName="idparroquia" />
+          <ScalarProperty Name="par_nombre" ColumnName="par_nombre" />
+          <ScalarProperty Name="ciudad_idciudad" ColumnName="ciudad_idciudad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="provincia">
+      <EntityTypeMapping TypeName="mydbModel.provincia">
+        <MappingFragment StoreEntitySet="provincia">
+          <ScalarProperty Name="idprovincia" ColumnName="idprovincia" />
+          <ScalarProperty Name="prov_nombre" ColumnName="prov_nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

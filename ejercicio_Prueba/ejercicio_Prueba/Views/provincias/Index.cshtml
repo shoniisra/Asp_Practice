@@ -1,0 +1,33 @@
+﻿@model IEnumerable<ejercicio_Prueba.Models.provincia>
+
+@{
+    ViewBag.Title = "Provincias";
+}
+
+<h2>Provincias</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.prov_nombre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.prov_nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idprovincia }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idprovincia }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idprovincia })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,39 @@
+﻿@model IEnumerable<ejercicio_Prueba.Models.parroquia>
+
+@{
+    ViewBag.Title = "Parroquias";
+}
+
+<h2>Parroquias</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.par_nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ciudad.ciu_nombre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.par_nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ciudad.ciu_nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idparroquia }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idparroquia }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idparroquia })
+        </td>
+    </tr>
+}
+
+</table>

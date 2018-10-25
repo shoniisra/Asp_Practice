@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="mydbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ciudad">
+    <Key>
+      <PropertyRef Name="idciudad" />
+    </Key>
+    <Property Name="idciudad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ciu_nombre" Type="varchar" MaxLength="45" />
+    <Property Name="provincia_idprovincia" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="parroquia">
+    <Key>
+      <PropertyRef Name="idparroquia" />
+    </Key>
+    <Property Name="idparroquia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="par_nombre" Type="varchar" MaxLength="45" />
+    <Property Name="ciudad_idciudad" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="provincia">
+    <Key>
+      <PropertyRef Name="idprovincia" />
+    </Key>
+    <Property Name="idprovincia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="prov_nombre" Type="varchar" MaxLength="45" />
+  </EntityType>
+  <Association Name="fk_ciudad_provincia">
+    <End Role="provincia" Type="Self.provincia" Multiplicity="1" />
+    <End Role="ciudad" Type="Self.ciudad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="provincia">
+        <PropertyRef Name="idprovincia" />
+      </Principal>
+      <Dependent Role="ciudad">
+        <PropertyRef Name="provincia_idprovincia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_parroquia_ciudad1">
+    <End Role="ciudad" Type="Self.ciudad" Multiplicity="1" />
+    <End Role="parroquia" Type="Self.parroquia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ciudad">
+        <PropertyRef Name="idciudad" />
+      </Principal>
+      <Dependent Role="parroquia">
+        <PropertyRef Name="ciudad_idciudad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="mydbModelStoreContainer">
+    <EntitySet Name="ciudad" EntityType="Self.ciudad" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="parroquia" EntityType="Self.parroquia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="provincia" EntityType="Self.provincia" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="fk_ciudad_provincia" Association="Self.fk_ciudad_provincia">
+      <End Role="provincia" EntitySet="provincia" />
+      <End Role="ciudad" EntitySet="ciudad" />
+    </AssociationSet>
+    <AssociationSet Name="fk_parroquia_ciudad1" Association="Self.fk_parroquia_ciudad1">
+      <End Role="ciudad" EntitySet="ciudad" />
+      <End Role="parroquia" EntitySet="parroquia" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

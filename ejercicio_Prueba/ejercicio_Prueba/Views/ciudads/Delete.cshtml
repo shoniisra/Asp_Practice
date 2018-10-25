@@ -1,0 +1,40 @@
+﻿@model ejercicio_Prueba.Models.ciudad
+
+@{
+    ViewBag.Title = "Eliminar";
+}
+
+<h2>Eliminar Ciudad</h2>
+
+<h3>Estas seguro?</h3>
+<div>
+    <h4>ciudad</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ciu_nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ciu_nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.provincia.prov_nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.provincia.prov_nombre)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

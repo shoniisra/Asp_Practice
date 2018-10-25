@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="mydbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ciudad">
+          <Key>
+            <PropertyRef Name="idciudad" />
+          </Key>
+          <Property Name="idciudad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ciu_nombre" Type="varchar" MaxLength="45" />
+          <Property Name="provincia_idprovincia" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="parroquia">
+          <Key>
+            <PropertyRef Name="idparroquia" />
+          </Key>
+          <Property Name="idparroquia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="par_nombre" Type="varchar" MaxLength="45" />
+          <Property Name="ciudad_idciudad" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="provincia">
+          <Key>
+            <PropertyRef Name="idprovincia" />
+          </Key>
+          <Property Name="idprovincia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="prov_nombre" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <Association Name="fk_ciudad_provincia">
+          <End Role="provincia" Type="Self.provincia" Multiplicity="1" />
+          <End Role="ciudad" Type="Self.ciudad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="provincia">
+              <PropertyRef Name="idprovincia" />
+            </Principal>
+            <Dependent Role="ciudad">
+              <PropertyRef Name="provincia_idprovincia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_parroquia_ciudad1">
+          <End Role="ciudad" Type="Self.ciudad" Multiplicity="1" />
+          <End Role="parroquia" Type="Self.parroquia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ciudad">
+              <PropertyRef Name="idciudad" />
+            </Principal>
+            <Dependent Role="parroquia">
+              <PropertyRef Name="ciudad_idciudad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="mydbModelStoreContainer">
+          <EntitySet Name="ciudad" EntityType="Self.ciudad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="parroquia" EntityType="Self.parroquia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="provincia" EntityType="Self.provincia" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk_ciudad_provincia" Association="Self.fk_ciudad_provincia">
+            <End Role="provincia" EntitySet="provincia" />
+            <End Role="ciudad" EntitySet="ciudad" />
+          </AssociationSet>
+          <AssociationSet Name="fk_parroquia_ciudad1" Association="Self.fk_parroquia_ciudad1">
+            <End Role="ciudad" EntitySet="ciudad" />
+            <End Role="parroquia" EntitySet="parroquia" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="mydbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ciudad">
+          <Key>
+            <PropertyRef Name="idciudad" />
+          </Key>
+          <Property Name="idciudad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ciu_nombre" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="provincia_idprovincia" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="provincia" Relationship="Self.fk_ciudad_provincia" FromRole="ciudad" ToRole="provincia" />
+          <NavigationProperty Name="parroquia" Relationship="Self.fk_parroquia_ciudad1" FromRole="ciudad" ToRole="parroquia" />
+        </EntityType>
+        <EntityType Name="parroquia">
+          <Key>
+            <PropertyRef Name="idparroquia" />
+          </Key>
+          <Property Name="idparroquia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="par_nombre" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="ciudad_idciudad" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ciudad" Relationship="Self.fk_parroquia_ciudad1" FromRole="parroquia" ToRole="ciudad" />
+        </EntityType>
+        <EntityType Name="provincia">
+          <Key>
+            <PropertyRef Name="idprovincia" />
+          </Key>
+          <Property Name="idprovincia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="prov_nombre" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ciudad" Relationship="Self.fk_ciudad_provincia" FromRole="provincia" ToRole="ciudad" />
+        </EntityType>
+        <Association Name="fk_ciudad_provincia">
+          <End Role="provincia" Type="Self.provincia" Multiplicity="1" />
+          <End Role="ciudad" Type="Self.ciudad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="provincia">
+              <PropertyRef Name="idprovincia" />
+            </Principal>
+            <Dependent Role="ciudad">
+              <PropertyRef Name="provincia_idprovincia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_parroquia_ciudad1">
+          <End Role="ciudad" Type="Self.ciudad" Multiplicity="1" />
+          <End Role="parroquia" Type="Self.parroquia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ciudad">
+              <PropertyRef Name="idciudad" />
+            </Principal>
+            <Dependent Role="parroquia">
+              <PropertyRef Name="ciudad_idciudad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="mydbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ciudad" EntityType="Self.ciudad" />
+          <EntitySet Name="parroquia" EntityType="Self.parroquia" />
+          <EntitySet Name="provincia" EntityType="Self.provincia" />
+          <AssociationSet Name="fk_ciudad_provincia" Association="Self.fk_ciudad_provincia">
+            <End Role="provincia" EntitySet="provincia" />
+            <End Role="ciudad" EntitySet="ciudad" />
+          </AssociationSet>
+          <AssociationSet Name="fk_parroquia_ciudad1" Association="Self.fk_parroquia_ciudad1">
+            <End Role="ciudad" EntitySet="ciudad" />
+            <End Role="parroquia" EntitySet="parroquia" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="mydbModelStoreContainer" CdmEntityContainer="mydbEntities">
+          <EntitySetMapping Name="ciudad">
+            <EntityTypeMapping TypeName="mydbModel.ciudad">
+              <MappingFragment StoreEntitySet="ciudad">
+                <ScalarProperty Name="idciudad" ColumnName="idciudad" />
+                <ScalarProperty Name="ciu_nombre" ColumnName="ciu_nombre" />
+                <ScalarProperty Name="provincia_idprovincia" ColumnName="provincia_idprovincia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="parroquia">
+            <EntityTypeMapping TypeName="mydbModel.parroquia">
+              <MappingFragment StoreEntitySet="parroquia">
+                <ScalarProperty Name="idparroquia" ColumnName="idparroquia" />
+                <ScalarProperty Name="par_nombre" ColumnName="par_nombre" />
+                <ScalarProperty Name="ciudad_idciudad" ColumnName="ciudad_idciudad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="provincia">
+            <EntityTypeMapping TypeName="mydbModel.provincia">
+              <MappingFragment StoreEntitySet="provincia">
+                <ScalarProperty Name="idprovincia" ColumnName="idprovincia" />
+                <ScalarProperty Name="prov_nombre" ColumnName="prov_nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

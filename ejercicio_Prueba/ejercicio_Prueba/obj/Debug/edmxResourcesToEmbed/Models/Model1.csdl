@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="mydbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ciudad">
+    <Key>
+      <PropertyRef Name="idciudad" />
+    </Key>
+    <Property Name="idciudad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ciu_nombre" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="provincia_idprovincia" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="provincia" Relationship="Self.fk_ciudad_provincia" FromRole="ciudad" ToRole="provincia" />
+    <NavigationProperty Name="parroquia" Relationship="Self.fk_parroquia_ciudad1" FromRole="ciudad" ToRole="parroquia" />
+  </EntityType>
+  <EntityType Name="parroquia">
+    <Key>
+      <PropertyRef Name="idparroquia" />
+    </Key>
+    <Property Name="idparroquia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="par_nombre" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="ciudad_idciudad" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ciudad" Relationship="Self.fk_parroquia_ciudad1" FromRole="parroquia" ToRole="ciudad" />
+  </EntityType>
+  <EntityType Name="provincia">
+    <Key>
+      <PropertyRef Name="idprovincia" />
+    </Key>
+    <Property Name="idprovincia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="prov_nombre" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ciudad" Relationship="Self.fk_ciudad_provincia" FromRole="provincia" ToRole="ciudad" />
+  </EntityType>
+  <Association Name="fk_ciudad_provincia">
+    <End Role="provincia" Type="Self.provincia" Multiplicity="1" />
+    <End Role="ciudad" Type="Self.ciudad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="provincia">
+        <PropertyRef Name="idprovincia" />
+      </Principal>
+      <Dependent Role="ciudad">
+        <PropertyRef Name="provincia_idprovincia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_parroquia_ciudad1">
+    <End Role="ciudad" Type="Self.ciudad" Multiplicity="1" />
+    <End Role="parroquia" Type="Self.parroquia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ciudad">
+        <PropertyRef Name="idciudad" />
+      </Principal>
+      <Dependent Role="parroquia">
+        <PropertyRef Name="ciudad_idciudad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="mydbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ciudad" EntityType="Self.ciudad" />
+    <EntitySet Name="parroquia" EntityType="Self.parroquia" />
+    <EntitySet Name="provincia" EntityType="Self.provincia" />
+    <AssociationSet Name="fk_ciudad_provincia" Association="Self.fk_ciudad_provincia">
+      <End Role="provincia" EntitySet="provincia" />
+      <End Role="ciudad" EntitySet="ciudad" />
+    </AssociationSet>
+    <AssociationSet Name="fk_parroquia_ciudad1" Association="Self.fk_parroquia_ciudad1">
+      <End Role="ciudad" EntitySet="ciudad" />
+      <End Role="parroquia" EntitySet="parroquia" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
