@@ -1,0 +1,42 @@
+﻿@model Ecuaciones.Models.ecuacion
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ecuacion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.a)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.a)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.b)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.b)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.c)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.c)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idecuacion }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

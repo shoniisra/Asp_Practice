@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ecuacionesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ecuacion">
+          <Key>
+            <PropertyRef Name="idecuacion" />
+          </Key>
+          <Property Name="idecuacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="a" Type="int" Nullable="false" />
+          <Property Name="b" Type="int" Nullable="false" />
+          <Property Name="c" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="evaluacion">
+          <Key>
+            <PropertyRef Name="idevaluacion" />
+          </Key>
+          <Property Name="idevaluacion" Type="int" Nullable="false" />
+          <Property Name="valor" Type="int" />
+          <Property Name="ecuacion_idecuacion" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="fk_evaluacion_ecuacion">
+          <End Role="ecuacion" Type="Self.ecuacion" Multiplicity="1" />
+          <End Role="evaluacion" Type="Self.evaluacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ecuacion">
+              <PropertyRef Name="idecuacion" />
+            </Principal>
+            <Dependent Role="evaluacion">
+              <PropertyRef Name="ecuacion_idecuacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ecuacionesModelStoreContainer">
+          <EntitySet Name="ecuacion" EntityType="Self.ecuacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="evaluacion" EntityType="Self.evaluacion" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk_evaluacion_ecuacion" Association="Self.fk_evaluacion_ecuacion">
+            <End Role="ecuacion" EntitySet="ecuacion" />
+            <End Role="evaluacion" EntitySet="evaluacion" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ecuacionesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ecuacion">
+          <Key>
+            <PropertyRef Name="idecuacion" />
+          </Key>
+          <Property Name="idecuacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="a" Type="Int32" Nullable="false" />
+          <Property Name="b" Type="Int32" Nullable="false" />
+          <Property Name="c" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="evaluacion" Relationship="Self.fk_evaluacion_ecuacion" FromRole="ecuacion" ToRole="evaluacion" />
+        </EntityType>
+        <EntityType Name="evaluacion">
+          <Key>
+            <PropertyRef Name="idevaluacion" />
+          </Key>
+          <Property Name="idevaluacion" Type="Int32" Nullable="false" />
+          <Property Name="valor" Type="Int32" />
+          <Property Name="ecuacion_idecuacion" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ecuacion" Relationship="Self.fk_evaluacion_ecuacion" FromRole="evaluacion" ToRole="ecuacion" />
+        </EntityType>
+        <Association Name="fk_evaluacion_ecuacion">
+          <End Role="ecuacion" Type="Self.ecuacion" Multiplicity="1" />
+          <End Role="evaluacion" Type="Self.evaluacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ecuacion">
+              <PropertyRef Name="idecuacion" />
+            </Principal>
+            <Dependent Role="evaluacion">
+              <PropertyRef Name="ecuacion_idecuacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ecuacionesEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ecuacion" EntityType="Self.ecuacion" />
+          <EntitySet Name="evaluacion" EntityType="Self.evaluacion" />
+          <AssociationSet Name="fk_evaluacion_ecuacion" Association="Self.fk_evaluacion_ecuacion">
+            <End Role="ecuacion" EntitySet="ecuacion" />
+            <End Role="evaluacion" EntitySet="evaluacion" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ecuacionesModelStoreContainer" CdmEntityContainer="ecuacionesEntities">
+          <EntitySetMapping Name="ecuacion">
+            <EntityTypeMapping TypeName="ecuacionesModel.ecuacion">
+              <MappingFragment StoreEntitySet="ecuacion">
+                <ScalarProperty Name="idecuacion" ColumnName="idecuacion" />
+                <ScalarProperty Name="a" ColumnName="a" />
+                <ScalarProperty Name="b" ColumnName="b" />
+                <ScalarProperty Name="c" ColumnName="c" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="evaluacion">
+            <EntityTypeMapping TypeName="ecuacionesModel.evaluacion">
+              <MappingFragment StoreEntitySet="evaluacion">
+                <ScalarProperty Name="idevaluacion" ColumnName="idevaluacion" />
+                <ScalarProperty Name="valor" ColumnName="valor" />
+                <ScalarProperty Name="ecuacion_idecuacion" ColumnName="ecuacion_idecuacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Ecuaciones.Models.ecuacion>
+
+@{
+    ViewBag.Title = "Lista de Ecuaciones";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Crear Nuevo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Ecuacion
+        </th>
+        <th>
+
+        </th>
+        <th>
+
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.a)
+                x<sup>2</sup> +
+                @Html.DisplayFor(modelItem => item.b)
+                x +
+                @Html.DisplayFor(modelItem => item.c)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.idecuacion }) |
+                @Html.ActionLink("Details", "Details", new { id = item.idecuacion }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.idecuacion })
+            </td>
+            <td>
+                @Html.ActionLink("Ver Tabla", "ver", "evaluacions", new { id = item.idecuacion })
+            </td>
+
+        </tr>
+    }
+
+    <p>
+        @Html.ActionLink("Crear Nuevo", "Create")
+    </p>
+</table>

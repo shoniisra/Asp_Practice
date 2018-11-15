@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ecuacionesModelStoreContainer" CdmEntityContainer="ecuacionesEntities">
+    <EntitySetMapping Name="ecuacion">
+      <EntityTypeMapping TypeName="ecuacionesModel.ecuacion">
+        <MappingFragment StoreEntitySet="ecuacion">
+          <ScalarProperty Name="idecuacion" ColumnName="idecuacion" />
+          <ScalarProperty Name="a" ColumnName="a" />
+          <ScalarProperty Name="b" ColumnName="b" />
+          <ScalarProperty Name="c" ColumnName="c" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="evaluacion">
+      <EntityTypeMapping TypeName="ecuacionesModel.evaluacion">
+        <MappingFragment StoreEntitySet="evaluacion">
+          <ScalarProperty Name="idevaluacion" ColumnName="idevaluacion" />
+          <ScalarProperty Name="valor" ColumnName="valor" />
+          <ScalarProperty Name="ecuacion_idecuacion" ColumnName="ecuacion_idecuacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

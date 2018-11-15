@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ecuacionesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ecuacion">
+    <Key>
+      <PropertyRef Name="idecuacion" />
+    </Key>
+    <Property Name="idecuacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="a" Type="int" Nullable="false" />
+    <Property Name="b" Type="int" Nullable="false" />
+    <Property Name="c" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="evaluacion">
+    <Key>
+      <PropertyRef Name="idevaluacion" />
+    </Key>
+    <Property Name="idevaluacion" Type="int" Nullable="false" />
+    <Property Name="valor" Type="int" />
+    <Property Name="ecuacion_idecuacion" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="fk_evaluacion_ecuacion">
+    <End Role="ecuacion" Type="Self.ecuacion" Multiplicity="1" />
+    <End Role="evaluacion" Type="Self.evaluacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ecuacion">
+        <PropertyRef Name="idecuacion" />
+      </Principal>
+      <Dependent Role="evaluacion">
+        <PropertyRef Name="ecuacion_idecuacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ecuacionesModelStoreContainer">
+    <EntitySet Name="ecuacion" EntityType="Self.ecuacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="evaluacion" EntityType="Self.evaluacion" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="fk_evaluacion_ecuacion" Association="Self.fk_evaluacion_ecuacion">
+      <End Role="ecuacion" EntitySet="ecuacion" />
+      <End Role="evaluacion" EntitySet="evaluacion" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
