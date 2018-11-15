@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="autosdbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="auto">
+    <Key>
+      <PropertyRef Name="auto_id" />
+    </Key>
+    <Property Name="auto_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="auto_placa" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+    <Property Name="auto_valor" Type="Single" />
+    <NavigationProperty Name="compra" Relationship="Self.fk_compra_auto" FromRole="auto" ToRole="compra" />
+  </EntityType>
+  <EntityType Name="cliente">
+    <Key>
+      <PropertyRef Name="cli_id" />
+    </Key>
+    <Property Name="cli_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cli_nombre" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="cli_fecha_nacimiento" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="compra" Relationship="Self.fk_compra_cliente1" FromRole="cliente" ToRole="compra" />
+  </EntityType>
+  <EntityType Name="compra">
+    <Key>
+      <PropertyRef Name="com_id" />
+    </Key>
+    <Property Name="com_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="com_fecha" Type="DateTime" Precision="0" />
+    <Property Name="con_subtotal" Type="Single" />
+    <Property Name="con_iva" Type="Single" />
+    <Property Name="con_total" Type="Single" />
+    <Property Name="auto_auto_id" Type="Int32" Nullable="false" />
+    <Property Name="cliente_cli_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="auto" Relationship="Self.fk_compra_auto" FromRole="compra" ToRole="auto" />
+    <NavigationProperty Name="cliente" Relationship="Self.fk_compra_cliente1" FromRole="compra" ToRole="cliente" />
+  </EntityType>
+  <Association Name="fk_compra_auto">
+    <End Role="auto" Type="Self.auto" Multiplicity="1" />
+    <End Role="compra" Type="Self.compra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="auto">
+        <PropertyRef Name="auto_id" />
+      </Principal>
+      <Dependent Role="compra">
+        <PropertyRef Name="auto_auto_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_compra_cliente1">
+    <End Role="cliente" Type="Self.cliente" Multiplicity="1" />
+    <End Role="compra" Type="Self.compra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cliente">
+        <PropertyRef Name="cli_id" />
+      </Principal>
+      <Dependent Role="compra">
+        <PropertyRef Name="cliente_cli_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="autosdbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="auto" EntityType="Self.auto" />
+    <EntitySet Name="cliente" EntityType="Self.cliente" />
+    <EntitySet Name="compra" EntityType="Self.compra" />
+    <AssociationSet Name="fk_compra_auto" Association="Self.fk_compra_auto">
+      <End Role="auto" EntitySet="auto" />
+      <End Role="compra" EntitySet="compra" />
+    </AssociationSet>
+    <AssociationSet Name="fk_compra_cliente1" Association="Self.fk_compra_cliente1">
+      <End Role="cliente" EntitySet="cliente" />
+      <End Role="compra" EntitySet="compra" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,42 @@
+﻿@model VIDEO_CLUB.ACTOR_PELICULA
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ACTOR_PELICULA</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.APL_PAPEL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.APL_PAPEL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ACTOR.ACT_NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ACTOR.ACT_NOMBRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PELICULA.PEL_NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PELICULA.PEL_NOMBRE)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.APL_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

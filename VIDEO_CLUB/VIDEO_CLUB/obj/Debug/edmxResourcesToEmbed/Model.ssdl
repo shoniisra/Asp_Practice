@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="VIDEOModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ACTOR">
+    <Key>
+      <PropertyRef Name="ACT_ID" />
+    </Key>
+    <Property Name="ACT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SEX_ID" Type="int" />
+    <Property Name="ACT_NOMBRE" Type="varchar" MaxLength="60" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ACTOR_PELICULA">
+    <Key>
+      <PropertyRef Name="APL_ID" />
+    </Key>
+    <Property Name="APL_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ACT_ID" Type="int" />
+    <Property Name="PEL_ID" Type="int" />
+    <Property Name="APL_PAPEL" Type="varchar" MaxLength="60" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ALQUILER">
+    <Key>
+      <PropertyRef Name="ALQ_ID" />
+    </Key>
+    <Property Name="ALQ_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SOC_ID" Type="int" />
+    <Property Name="PEL_ID" Type="int" />
+    <Property Name="ALQ_FECHA_DESDE" Type="datetime" Nullable="false" />
+    <Property Name="ALQ_FECHA_HASTA" Type="datetime" Nullable="false" />
+    <Property Name="ALQ_VALOR" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="ALQ_FECHA_ENTREGA" Type="datetime" />
+  </EntityType>
+  <EntityType Name="DIRECTOR">
+    <Key>
+      <PropertyRef Name="DIR_ID" />
+    </Key>
+    <Property Name="DIR_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DIR_NOMBRE" Type="varchar" MaxLength="60" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FORMATO">
+    <Key>
+      <PropertyRef Name="FOR_ID" />
+    </Key>
+    <Property Name="FOR_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FOR_NOMBRE" Type="varchar" MaxLength="60" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GENERO">
+    <Key>
+      <PropertyRef Name="GEN_ID" />
+    </Key>
+    <Property Name="GEN_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GEN_NOMBRE" Type="varchar" MaxLength="60" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PELICULA">
+    <Key>
+      <PropertyRef Name="PEL_ID" />
+    </Key>
+    <Property Name="PEL_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GEN_ID" Type="int" />
+    <Property Name="DIR_ID" Type="int" />
+    <Property Name="FOR_ID" Type="int" />
+    <Property Name="PEL_NOMBRE" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="PEL_COSTO" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="PEL_FECHA_ESTRENO" Type="datetime" />
+  </EntityType>
+  <EntityType Name="SEXO">
+    <Key>
+      <PropertyRef Name="SEX_ID" />
+    </Key>
+    <Property Name="SEX_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SEX_NOMBRE" Type="varchar" MaxLength="60" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SOCIO">
+    <Key>
+      <PropertyRef Name="SOC_ID" />
+    </Key>
+    <Property Name="SOC_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SOC_CEDULA" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="SOC_NOMBRE" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="SOC_DIRECCION" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="SOC_TELEFONO" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="SOC_CORREO" Type="varchar" MaxLength="60" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_ACTOR_PE_ACTOR_ACT_ACTOR">
+    <End Role="ACTOR" Type="Self.ACTOR" Multiplicity="0..1" />
+    <End Role="ACTOR_PELICULA" Type="Self.ACTOR_PELICULA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ACTOR">
+        <PropertyRef Name="ACT_ID" />
+      </Principal>
+      <Dependent Role="ACTOR_PELICULA">
+        <PropertyRef Name="ACT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ACTOR_PE_PELICULA__PELICULA">
+    <End Role="PELICULA" Type="Self.PELICULA" Multiplicity="0..1" />
+    <End Role="ACTOR_PELICULA" Type="Self.ACTOR_PELICULA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PELICULA">
+        <PropertyRef Name="PEL_ID" />
+      </Principal>
+      <Dependent Role="ACTOR_PELICULA">
+        <PropertyRef Name="PEL_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ACTOR_SEXO_ACTO_SEXO">
+    <End Role="SEXO" Type="Self.SEXO" Multiplicity="0..1" />
+    <End Role="ACTOR" Type="Self.ACTOR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SEXO">
+        <PropertyRef Name="SEX_ID" />
+      </Principal>
+      <Dependent Role="ACTOR">
+        <PropertyRef Name="SEX_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ALQUILER_PELICULA__PELICULA">
+    <End Role="PELICULA" Type="Self.PELICULA" Multiplicity="0..1" />
+    <End Role="ALQUILER" Type="Self.ALQUILER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PELICULA">
+        <PropertyRef Name="PEL_ID" />
+      </Principal>
+      <Dependent Role="ALQUILER">
+        <PropertyRef Name="PEL_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ALQUILER_SOCIO_ALQ_SOCIO">
+    <End Role="SOCIO" Type="Self.SOCIO" Multiplicity="0..1" />
+    <End Role="ALQUILER" Type="Self.ALQUILER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SOCIO">
+        <PropertyRef Name="SOC_ID" />
+      </Principal>
+      <Dependent Role="ALQUILER">
+        <PropertyRef Name="SOC_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PELICULA_DIRECTOR__DIRECTOR">
+    <End Role="DIRECTOR" Type="Self.DIRECTOR" Multiplicity="0..1" />
+    <End Role="PELICULA" Type="Self.PELICULA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DIRECTOR">
+        <PropertyRef Name="DIR_ID" />
+      </Principal>
+      <Dependent Role="PELICULA">
+        <PropertyRef Name="DIR_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PELICULA_FORMATO_P_FORMATO">
+    <End Role="FORMATO" Type="Self.FORMATO" Multiplicity="0..1" />
+    <End Role="PELICULA" Type="Self.PELICULA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FORMATO">
+        <PropertyRef Name="FOR_ID" />
+      </Principal>
+      <Dependent Role="PELICULA">
+        <PropertyRef Name="FOR_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PELICULA_GENERO_PE_GENERO">
+    <End Role="GENERO" Type="Self.GENERO" Multiplicity="0..1" />
+    <End Role="PELICULA" Type="Self.PELICULA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GENERO">
+        <PropertyRef Name="GEN_ID" />
+      </Principal>
+      <Dependent Role="PELICULA">
+        <PropertyRef Name="GEN_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="VIDEOModelStoreContainer">
+    <EntitySet Name="ACTOR" EntityType="Self.ACTOR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ACTOR_PELICULA" EntityType="Self.ACTOR_PELICULA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ALQUILER" EntityType="Self.ALQUILER" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DIRECTOR" EntityType="Self.DIRECTOR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FORMATO" EntityType="Self.FORMATO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GENERO" EntityType="Self.GENERO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PELICULA" EntityType="Self.PELICULA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SEXO" EntityType="Self.SEXO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SOCIO" EntityType="Self.SOCIO" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_ACTOR_PE_ACTOR_ACT_ACTOR" Association="Self.FK_ACTOR_PE_ACTOR_ACT_ACTOR">
+      <End Role="ACTOR" EntitySet="ACTOR" />
+      <End Role="ACTOR_PELICULA" EntitySet="ACTOR_PELICULA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ACTOR_PE_PELICULA__PELICULA" Association="Self.FK_ACTOR_PE_PELICULA__PELICULA">
+      <End Role="PELICULA" EntitySet="PELICULA" />
+      <End Role="ACTOR_PELICULA" EntitySet="ACTOR_PELICULA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ACTOR_SEXO_ACTO_SEXO" Association="Self.FK_ACTOR_SEXO_ACTO_SEXO">
+      <End Role="SEXO" EntitySet="SEXO" />
+      <End Role="ACTOR" EntitySet="ACTOR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ALQUILER_PELICULA__PELICULA" Association="Self.FK_ALQUILER_PELICULA__PELICULA">
+      <End Role="PELICULA" EntitySet="PELICULA" />
+      <End Role="ALQUILER" EntitySet="ALQUILER" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ALQUILER_SOCIO_ALQ_SOCIO" Association="Self.FK_ALQUILER_SOCIO_ALQ_SOCIO">
+      <End Role="SOCIO" EntitySet="SOCIO" />
+      <End Role="ALQUILER" EntitySet="ALQUILER" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PELICULA_DIRECTOR__DIRECTOR" Association="Self.FK_PELICULA_DIRECTOR__DIRECTOR">
+      <End Role="DIRECTOR" EntitySet="DIRECTOR" />
+      <End Role="PELICULA" EntitySet="PELICULA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PELICULA_FORMATO_P_FORMATO" Association="Self.FK_PELICULA_FORMATO_P_FORMATO">
+      <End Role="FORMATO" EntitySet="FORMATO" />
+      <End Role="PELICULA" EntitySet="PELICULA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PELICULA_GENERO_PE_GENERO" Association="Self.FK_PELICULA_GENERO_PE_GENERO">
+      <End Role="GENERO" EntitySet="GENERO" />
+      <End Role="PELICULA" EntitySet="PELICULA" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

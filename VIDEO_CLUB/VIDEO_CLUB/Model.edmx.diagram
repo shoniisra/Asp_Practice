@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="124cdc29439f4febb99eb1b8664213d8" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="VIDEOModel.ACTOR" Width="1.5" PointX="3" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VIDEOModel.ACTOR_PELICULA" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="VIDEOModel.ALQUILER" Width="1.5" PointX="8.25" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="VIDEOModel.DIRECTOR" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="VIDEOModel.FORMATO" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VIDEOModel.GENERO" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VIDEOModel.PELICULA" Width="1.5" PointX="3" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="VIDEOModel.SEXO" Width="1.5" PointX="0.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="VIDEOModel.SOCIO" Width="1.5" PointX="6" PointY="8.5" IsExpanded="true" />
+        <AssociationConnector Association="VIDEOModel.FK_ACTOR_PE_ACTOR_ACT_ACTOR" ManuallyRouted="false" />
+        <AssociationConnector Association="VIDEOModel.FK_ACTOR_SEXO_ACTO_SEXO" ManuallyRouted="false" />
+        <AssociationConnector Association="VIDEOModel.FK_ACTOR_PE_PELICULA__PELICULA" ManuallyRouted="false" />
+        <AssociationConnector Association="VIDEOModel.FK_ALQUILER_PELICULA__PELICULA" ManuallyRouted="false" />
+        <AssociationConnector Association="VIDEOModel.FK_ALQUILER_SOCIO_ALQ_SOCIO" ManuallyRouted="false" />
+        <AssociationConnector Association="VIDEOModel.FK_PELICULA_DIRECTOR__DIRECTOR" ManuallyRouted="false" />
+        <AssociationConnector Association="VIDEOModel.FK_PELICULA_FORMATO_P_FORMATO" ManuallyRouted="false" />
+        <AssociationConnector Association="VIDEOModel.FK_PELICULA_GENERO_PE_GENERO" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

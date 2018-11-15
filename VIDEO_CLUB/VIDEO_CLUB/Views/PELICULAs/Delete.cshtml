@@ -1,0 +1,72 @@
+﻿@model VIDEO_CLUB.PELICULA
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>PELICULA</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PEL_NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PEL_NOMBRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PEL_COSTO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PEL_COSTO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PEL_FECHA_ESTRENO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PEL_FECHA_ESTRENO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DIRECTOR.DIR_NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DIRECTOR.DIR_NOMBRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FORMATO.FOR_NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FORMATO.FOR_NOMBRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GENERO.GEN_NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GENERO.GEN_NOMBRE)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

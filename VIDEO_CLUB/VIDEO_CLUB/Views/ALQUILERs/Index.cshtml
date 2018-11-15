@@ -1,0 +1,63 @@
+﻿@model IEnumerable<VIDEO_CLUB.ALQUILER>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Alquileres</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ALQ_FECHA_DESDE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ALQ_FECHA_HASTA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ALQ_VALOR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ALQ_FECHA_ENTREGA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PELICULA.PEL_NOMBRE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SOCIO.SOC_CEDULA)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ALQ_FECHA_DESDE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ALQ_FECHA_HASTA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ALQ_VALOR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ALQ_FECHA_ENTREGA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PELICULA.PEL_NOMBRE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SOCIO.SOC_CEDULA)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ALQ_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ALQ_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ALQ_ID })
+        </td>
+    </tr>
+}
+
+</table>

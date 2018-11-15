@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="autosdbModelStoreContainer" CdmEntityContainer="autosdbEntities1">
+    <EntitySetMapping Name="auto">
+      <EntityTypeMapping TypeName="autosdbModel.auto">
+        <MappingFragment StoreEntitySet="auto">
+          <ScalarProperty Name="auto_id" ColumnName="auto_id" />
+          <ScalarProperty Name="auto_placa" ColumnName="auto_placa" />
+          <ScalarProperty Name="auto_valor" ColumnName="auto_valor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cliente">
+      <EntityTypeMapping TypeName="autosdbModel.cliente">
+        <MappingFragment StoreEntitySet="cliente">
+          <ScalarProperty Name="cli_id" ColumnName="cli_id" />
+          <ScalarProperty Name="cli_nombre" ColumnName="cli_nombre" />
+          <ScalarProperty Name="cli_fecha_nacimiento" ColumnName="cli_fecha_nacimiento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="compra">
+      <EntityTypeMapping TypeName="autosdbModel.compra">
+        <MappingFragment StoreEntitySet="compra">
+          <ScalarProperty Name="com_id" ColumnName="com_id" />
+          <ScalarProperty Name="com_fecha" ColumnName="com_fecha" />
+          <ScalarProperty Name="con_subtotal" ColumnName="con_subtotal" />
+          <ScalarProperty Name="con_iva" ColumnName="con_iva" />
+          <ScalarProperty Name="con_total" ColumnName="con_total" />
+          <ScalarProperty Name="auto_auto_id" ColumnName="auto_auto_id" />
+          <ScalarProperty Name="cliente_cli_id" ColumnName="cliente_cli_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

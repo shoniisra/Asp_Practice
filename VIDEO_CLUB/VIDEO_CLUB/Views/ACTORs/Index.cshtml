@@ -1,0 +1,53 @@
+﻿@model IEnumerable<VIDEO_CLUB.ACTOR>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Actores</h2>
+
+
+<div class="row">
+    <div class="col-md-6">
+
+        <p>
+            @Html.ActionLink("Crear Nuevo", "Create")
+        </p>
+    </div>
+
+    <div class="col-md-6">
+
+        <a href="ACTOR_PELICULA" class="btn btn-info btn-lg">
+            <span class="glyphicon glyphicon-cog"></span> Añadir Pelicula
+        </a>
+    </div>
+</div>
+<br />
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ACT_NOMBRE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SEXO.SEX_NOMBRE)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ACT_NOMBRE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SEXO.SEX_NOMBRE)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ACT_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ACT_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ACT_ID })
+        </td>
+    </tr>
+}
+
+</table>

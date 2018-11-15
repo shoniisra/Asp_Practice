@@ -1,0 +1,39 @@
+﻿@model IEnumerable<AutosDataAnnotation.auto>
+
+@{
+    ViewBag.Title = "Autos";
+}
+
+<h2>Autos</h2>
+
+<p>
+    @Html.ActionLink("Crear Nuevo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.auto_placa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.auto_valor)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.auto_placa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.auto_valor)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.auto_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.auto_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.auto_id })
+        </td>
+    </tr>
+}
+
+</table>

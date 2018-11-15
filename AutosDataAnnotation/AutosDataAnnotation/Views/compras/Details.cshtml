@@ -1,0 +1,66 @@
+﻿@model AutosDataAnnotation.compra
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>compra</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.com_fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.com_fecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.con_subtotal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.con_subtotal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.con_iva)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.con_iva)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.con_total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.con_total)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.auto.auto_placa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.auto.auto_placa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cliente.cli_nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cliente.cli_nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.com_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

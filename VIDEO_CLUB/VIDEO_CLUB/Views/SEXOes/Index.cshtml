@@ -1,0 +1,33 @@
+﻿@model IEnumerable<VIDEO_CLUB.SEXO>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Sexo</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SEX_NOMBRE)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SEX_NOMBRE)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.SEX_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.SEX_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.SEX_ID })
+        </td>
+    </tr>
+}
+
+</table>

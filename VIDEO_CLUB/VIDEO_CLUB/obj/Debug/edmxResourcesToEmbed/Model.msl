@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="VIDEOModelStoreContainer" CdmEntityContainer="VIDEOEntities1">
+    <EntitySetMapping Name="ACTOR">
+      <EntityTypeMapping TypeName="VIDEOModel.ACTOR">
+        <MappingFragment StoreEntitySet="ACTOR">
+          <ScalarProperty Name="ACT_ID" ColumnName="ACT_ID" />
+          <ScalarProperty Name="SEX_ID" ColumnName="SEX_ID" />
+          <ScalarProperty Name="ACT_NOMBRE" ColumnName="ACT_NOMBRE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ACTOR_PELICULA">
+      <EntityTypeMapping TypeName="VIDEOModel.ACTOR_PELICULA">
+        <MappingFragment StoreEntitySet="ACTOR_PELICULA">
+          <ScalarProperty Name="APL_ID" ColumnName="APL_ID" />
+          <ScalarProperty Name="ACT_ID" ColumnName="ACT_ID" />
+          <ScalarProperty Name="PEL_ID" ColumnName="PEL_ID" />
+          <ScalarProperty Name="APL_PAPEL" ColumnName="APL_PAPEL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ALQUILER">
+      <EntityTypeMapping TypeName="VIDEOModel.ALQUILER">
+        <MappingFragment StoreEntitySet="ALQUILER">
+          <ScalarProperty Name="ALQ_ID" ColumnName="ALQ_ID" />
+          <ScalarProperty Name="SOC_ID" ColumnName="SOC_ID" />
+          <ScalarProperty Name="PEL_ID" ColumnName="PEL_ID" />
+          <ScalarProperty Name="ALQ_FECHA_DESDE" ColumnName="ALQ_FECHA_DESDE" />
+          <ScalarProperty Name="ALQ_FECHA_HASTA" ColumnName="ALQ_FECHA_HASTA" />
+          <ScalarProperty Name="ALQ_VALOR" ColumnName="ALQ_VALOR" />
+          <ScalarProperty Name="ALQ_FECHA_ENTREGA" ColumnName="ALQ_FECHA_ENTREGA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DIRECTOR">
+      <EntityTypeMapping TypeName="VIDEOModel.DIRECTOR">
+        <MappingFragment StoreEntitySet="DIRECTOR">
+          <ScalarProperty Name="DIR_ID" ColumnName="DIR_ID" />
+          <ScalarProperty Name="DIR_NOMBRE" ColumnName="DIR_NOMBRE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FORMATO">
+      <EntityTypeMapping TypeName="VIDEOModel.FORMATO">
+        <MappingFragment StoreEntitySet="FORMATO">
+          <ScalarProperty Name="FOR_ID" ColumnName="FOR_ID" />
+          <ScalarProperty Name="FOR_NOMBRE" ColumnName="FOR_NOMBRE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GENERO">
+      <EntityTypeMapping TypeName="VIDEOModel.GENERO">
+        <MappingFragment StoreEntitySet="GENERO">
+          <ScalarProperty Name="GEN_ID" ColumnName="GEN_ID" />
+          <ScalarProperty Name="GEN_NOMBRE" ColumnName="GEN_NOMBRE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PELICULA">
+      <EntityTypeMapping TypeName="VIDEOModel.PELICULA">
+        <MappingFragment StoreEntitySet="PELICULA">
+          <ScalarProperty Name="PEL_ID" ColumnName="PEL_ID" />
+          <ScalarProperty Name="GEN_ID" ColumnName="GEN_ID" />
+          <ScalarProperty Name="DIR_ID" ColumnName="DIR_ID" />
+          <ScalarProperty Name="FOR_ID" ColumnName="FOR_ID" />
+          <ScalarProperty Name="PEL_NOMBRE" ColumnName="PEL_NOMBRE" />
+          <ScalarProperty Name="PEL_COSTO" ColumnName="PEL_COSTO" />
+          <ScalarProperty Name="PEL_FECHA_ESTRENO" ColumnName="PEL_FECHA_ESTRENO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SEXO">
+      <EntityTypeMapping TypeName="VIDEOModel.SEXO">
+        <MappingFragment StoreEntitySet="SEXO">
+          <ScalarProperty Name="SEX_ID" ColumnName="SEX_ID" />
+          <ScalarProperty Name="SEX_NOMBRE" ColumnName="SEX_NOMBRE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SOCIO">
+      <EntityTypeMapping TypeName="VIDEOModel.SOCIO">
+        <MappingFragment StoreEntitySet="SOCIO">
+          <ScalarProperty Name="SOC_ID" ColumnName="SOC_ID" />
+          <ScalarProperty Name="SOC_CEDULA" ColumnName="SOC_CEDULA" />
+          <ScalarProperty Name="SOC_NOMBRE" ColumnName="SOC_NOMBRE" />
+          <ScalarProperty Name="SOC_DIRECCION" ColumnName="SOC_DIRECCION" />
+          <ScalarProperty Name="SOC_TELEFONO" ColumnName="SOC_TELEFONO" />
+          <ScalarProperty Name="SOC_CORREO" ColumnName="SOC_CORREO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

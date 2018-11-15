@@ -1,0 +1,63 @@
+﻿@model IEnumerable<AutosDataAnnotation.compra>
+
+@{
+    ViewBag.Title = "Compra";
+}
+
+<h2>Compra</h2>
+
+<p>
+    @Html.ActionLink("Crear Nuevo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.com_fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.con_subtotal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.con_iva)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.con_total)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.auto.auto_placa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cliente.cli_nombre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.com_fecha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.con_subtotal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.con_iva)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.con_total)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.auto.auto_placa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cliente.cli_nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.com_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.com_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.com_id })
+        </td>
+    </tr>
+}
+
+</table>

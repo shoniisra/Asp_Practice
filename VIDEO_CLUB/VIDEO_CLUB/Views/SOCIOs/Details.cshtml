@@ -1,0 +1,58 @@
+﻿@model VIDEO_CLUB.SOCIO
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SOCIO</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SOC_CEDULA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SOC_CEDULA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SOC_NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SOC_NOMBRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SOC_DIRECCION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SOC_DIRECCION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SOC_TELEFONO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SOC_TELEFONO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SOC_CORREO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SOC_CORREO)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SOC_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

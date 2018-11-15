@@ -1,0 +1,66 @@
+﻿@model VIDEO_CLUB.PELICULA
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PELICULA</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PEL_NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PEL_NOMBRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PEL_COSTO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PEL_COSTO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PEL_FECHA_ESTRENO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PEL_FECHA_ESTRENO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DIRECTOR.DIR_NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DIRECTOR.DIR_NOMBRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FORMATO.FOR_NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FORMATO.FOR_NOMBRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GENERO.GEN_NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GENERO.GEN_NOMBRE)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PEL_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
